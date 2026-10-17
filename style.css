@@ -1,5 +1,6 @@
 :root {
-  --bg: #F7F7F4;
+  --outside: #ECEBE5;
+  --bg: #FBFBF9;
   --card: #FFFFFF;
   --ink: #23211D;
   --body: #4A4740;
@@ -13,6 +14,7 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
+    --outside: #0E0D09;
     --bg: #16150F;
     --card: #201F19;
     --ink: #ECE8DF;
@@ -29,7 +31,7 @@
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--outside);
   color: var(--body);
   font-family: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 16px;
@@ -37,7 +39,10 @@ body {
 }
 a { color: var(--link); }
 a:hover { color: var(--link-hover); }
-.wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+/* One centered column holds everything, rules included; the sides stay empty. */
+.page { max-width: 760px; min-height: 100vh; margin: 0 auto; background: var(--bg); border-inline: 1px solid var(--line); display: flex; flex-direction: column; }
+.page > main { flex: 1; }
+.wrap { padding: 0 32px; }
 header { border-bottom: 1px solid var(--line); }
 header .wrap { display: flex; align-items: center; gap: 12px; min-height: 72px; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 700; font-size: 18px; }
@@ -62,6 +67,10 @@ strong { color: var(--ink); }
 .links a { font-weight: 600; padding: 10px 0; }
 footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
 footer .wrap { padding-top: 20px; padding-bottom: 32px; }
+@media (max-width: 760px) {
+  .page { border-inline: 0; }
+  .wrap { padding: 0 16px; }
+}
 @media (max-width: 480px) {
   h1 { font-size: 26px; }
   .brand span { display: none; }
